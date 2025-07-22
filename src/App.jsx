@@ -6,12 +6,14 @@ import ProductDetail from "./components/ProductDetail";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import About from "./components/About";
 
 const App = () => {
   return (
     <div>
       <Routes>
         <Route path="" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/productList" element={<ProductList />} />
         <Route path="/productDetail/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
