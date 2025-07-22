@@ -5,7 +5,7 @@ import { CartContext } from "../context/CartContext";
 
 const ProductDetail = () => {
   const { products } = useContext(ProductContext);
-  const [cart, setCart] = useContext(CartContext);
+  const [Cart, setCart] = useContext(CartContext);
   const { id } = useParams();
 
   const product = products.find((p) => p.id === Number(id));
@@ -56,12 +56,12 @@ const ProductDetail = () => {
 
         {/* Buttons */}
         <div className="flex flex-col gap-4 pt-4">
-          <button className="bg-black text-white py-3 font-semibold tracking-wide uppercase">
+          <button className="bg-black text-white py-3 font-semibold cursor-pointer tracking-wide uppercase">
             Buy Now
           </button>
           <button
             onClick={handleAddToCart}
-            className="border border-black py-3 font-semibold tracking-wide uppercase hover:bg-neutral-100"
+            className="border border-black py-3 font-semibold cursor-pointer tracking-wide uppercase hover:bg-neutral-100"
           >
             Add to Cart
           </button>

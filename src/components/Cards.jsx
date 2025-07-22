@@ -9,7 +9,6 @@ const Cards = () => {
   const { filters } = useContext(FilterContext);
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [extraFilters] = useContext(ExtraFilterContext);
-  console.log(extraFilters);
   useEffect(() => {
     const applyFilters = () => {
       let filtered = [...products];
