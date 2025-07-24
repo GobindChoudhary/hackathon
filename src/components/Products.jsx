@@ -1,38 +1,43 @@
 import Cards from "./Cards";
 import { useContext } from "react";
-// import { FilterContext } from "../context/FilterContext";
-// import { ProductContext } from "../context/ProductContext";
+import { FilterContext } from "../context/FilterContext";
 import DropDown from "./DropDown";
 
 const Product = () => {
-  // const { products, setProducts } = useContext(ProductContext);
-  // const { filters, setFilters } = useContext(FilterContext);
+  const { filters } = useContext(FilterContext);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-black font-sans  ">
+    <div className="min-h-screen flex flex-col bg-white text-black font-sans">
       {/* Topbar */}
-      <div className="px-12 py-4 border-b border-black flex justify-between items-center ">
-        <h1 className="text-6xl font-bold uppercase tracking-tight">Outer</h1>
-        <div className="flex items-center space-x-2">
+      <div className="  py-4 border-b border-black flex flex-col md:flex-row justify-between gap-4 md:items-center">
+        <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold uppercase tracking-tight">
+          {filters.type.toUpperCase()}
+        </h1>
+
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto">
           <input
             type="text"
-            placeholder="Write something"
-            className="border border-black px-4 py-2 w-72 text-sm"
+            placeholder="Search items..."
+            className="border border-black px-4 py-2 text-sm w-full sm:w-64"
             onChange={(e) => {
               console.log(e.target.value);
             }}
           />
-          <button className="bg-black text-white px-5 py-2 text-sm">
+          <button className="bg-black text-white px-5 py-2 text-sm w-full sm:w-auto">
             SEARCH
           </button>
         </div>
       </div>
 
-      {/* Filter Bar */}
-      <div className="px-12">
+      {/* Filter Dropdown */}
+      <div className="py-4">
         <DropDown />
       </div>
-      <Cards />
+
+      {/* Cards Section */}
+      <div className="">
+        <Cards />
+      </div>
     </div>
   );
 };

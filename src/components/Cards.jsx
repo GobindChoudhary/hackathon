@@ -55,7 +55,7 @@ const Cards = () => {
   }, [filters.type, products, extraFilters]);
 
   return (
-    <div className="flex-1 overflow-y-auto px-12 pb-8">
+    <div className="flex-1 overflow-y-auto  pb-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-14 mt-10">
         {filteredProducts.map((product) => (
           <div key={product.id} className="flex flex-col">

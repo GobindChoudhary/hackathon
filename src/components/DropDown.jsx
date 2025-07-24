@@ -43,30 +43,23 @@ const DropDown = () => {
         setOpenFilter(null);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
-    <div className="flex flex-wrap gap-4 mt-6 text-sm font-medium uppercase">
+    <div className="flex flex-wrap gap-4 mt-2 text-sm font-medium uppercase">
       {filters.map((filter) => (
-        <div key={filter.name} className="relative">
+        <div key={filter.name} className="relative" ref={dropdownRef}>
           <button
             onClick={() => toggleFilter(filter.name)}
-            className="flex items-center justify-between w-40 border border-black px-4 py-2 text-neutral-700 hover:text-black"
+            className="flex items-center justify-between w-35 md:w-40  border border-black px-4 py-2 text-neutral-700 hover:text-black"
           >
             {filter.name}
             <RiArrowDownSLine className="ml-2 text-lg" />
           </button>
-
           {openFilter === filter.name && (
-            <div
-              ref={dropdownRef}
-              className="absolute top-full mt-1 w-40 bg-white border border-black shadow z-10"
-            >
+            <div className="absolute top-full mt-1 w-35 md:w-40 bg-white border border-black shadow z-10">
               {filter.options.map((option, idx) => (
                 <div
                   key={idx}
