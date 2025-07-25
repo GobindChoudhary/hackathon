@@ -53,7 +53,6 @@ const Cards = () => {
 
     applyFilters();
   }, [filters.type, products, extraFilters]);
-
   return (
     <div className="flex-1 overflow-y-auto  pb-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-14 mt-10">
@@ -72,7 +71,7 @@ const Cards = () => {
             <h3 className="text-sm mt-4 font-light uppercase">
               {product.name}
             </h3>
-            <p className="mt-1 text-base font-bold">{product.price}</p>
+            <p className="mt-1 text-base font-bold">₹{product.price}</p>
           </div>
         ))}
       </div>

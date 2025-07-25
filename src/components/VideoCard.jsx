@@ -5,76 +5,79 @@ const newArrivals = [
     id: 1,
     name: "Sand Kargo",
     price: 1999,
-    image: "/product1.jpg",
-    video: "/video1.mp4",
+    image: "/ruged t-shirt.jpg",
+    video: "/sand Cargo.mp4",
     category: "Kargo",
   },
   {
     id: 2,
-    name: "Oversized BB Tee",
+    name: "VTG Cargo",
     price: 999,
-    image: "/product2.jpg",
-    video: "/video2.mp4",
+    image: "/green cargo.jpg",
+    video: "/VTG.mp4",
     category: "T-shirt",
   },
   {
     id: 3,
-    name: "Raised Right Hoodie",
+    name: "Twin koi Tee",
     price: 2499,
-    image: "/product3.jpg",
-    video: "/video3.mp4",
+    image: "/green t-shirt.jpg",
+    video: "/Twin.mp4",
     category: "Hoodie",
   },
   {
     id: 4,
-    name: "Signature Cap",
+    name: "Summer time_happiness",
     price: 499,
-    image: "/product4.jpg",
-    video: "/video4.mp4",
+    image: "/white t-shirt.jpg",
+    video: "/summer.mp4",
     category: "Cap",
   },
 ];
 
-const VideoCard = ({ src }) => {
-  const videoRef = useRef(null);
+const VideoCard = () => {
+  return newArrivals.map((item) => {
+    const videoRef = useRef(null);
 
-  const handleMouseEnter = () => {
-    videoRef.current?.play();
-  };
+    const handleMouseEnter = () => {
+      videoRef.current?.play();
+    };
 
-  const handleMouseLeave = () => {
-    videoRef.current?.pause();
-    videoRef.current.currentTime = 0; // Optional: rewind
-  };
+    const handleMouseLeave = () => {
+      videoRef.current?.pause();
+      videoRef.current.currentTime = 0;
+    };
 
-  return (
-    <div
-      className="card relative w-full sm:w-[80vw] md:w-[100%] h-[60vh] md:h-[70vh] bg-cover bg-center overflow-hidden transition-transform duration-300 hover:scale-105"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <video
-        ref={videoRef}
-        src={src}
-        muted
-        loop
-        className="w-full h-full object-cover"
-      />
-
-      {/* Bottom Info Overlay */}
-      <div className="absolute bottom-[2%] left-1/2 -translate-x-1/2 flex items-center justify-start gap-3 w-[90%] h-[15%] px-2 bg-white/40 shadow-md rounded-md">
-        <img
-          src="/public/hero1.jpg"
-          className="h-full aspect-square object-cover rounded"
-          alt="product"
+    return (
+      <div
+        key={item.id}
+        className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden   transition-transform duration-200 hover:scale-102"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <video
+          ref={videoRef}
+          src={item.video}
+          muted
+          loop
+          className="w-full h-full object-cover"
         />
-        <div className="flex flex-col justify-center">
-          <h3 className="font-bold text-sm md:text-base"></h3>
-          <p className="font-semibold text-xs md:text-sm"></p>
+
+        {/* Overlay */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/70 w-[90%] flex items-center gap-4 p-2  backdrop-blur-sm">
+          <img
+            src={item.image}
+            alt={item.name}
+            className="h-16 w-16 object-cover "
+          />
+          <div>
+            <h3 className="text-sm font-semibold">{item.name}</h3>
+            <p className="text-xs font-medium">₹{item.price}</p>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  });
 };
 
 export default VideoCard;
